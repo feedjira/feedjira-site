@@ -1,3 +1,9 @@
+activate :syntax, line_numbers: true
+set :markdown_engine, :redcarpet
+set :markdown, fenced_code_blocks: true, smartypants: true
+
+set :haml, { ugly: true }
+
 ###
 # Blog settings
 ###
