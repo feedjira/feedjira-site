@@ -16,8 +16,7 @@ objects that are returned. Feedjira automatically inserts etag and last-modified
 information from the http response headers to lower bandwidth usage, eliminate
 unnecessary parsing, and make things speedier in general.
 
-Another feature present in Feedjira is the ability to create callback functions
-that get called "on success" and "on failure" when getting a feed. This makes it
+Callback are supported that get called on success and failure. This makes it
 easy to do things like log errors or update data stores.
 
 The fetching and parsing logic have been decoupled so that either of them can be
@@ -29,88 +28,92 @@ Lastly, Feedjira has the ability to define custom parsing classes. In truth,
 Feedjira could be used to parse much more than feeds. Microformats, page
 scraping, and almost anything else are fair game.
 
-## Fetch and parse
+## Fetch and Parse
 
 For many users, the `fetch_and_parse` method is what they use Feedjira for. This
 method takes your urls and then returns Feed objects:
 
 ```ruby
 urls = %w[http://feedjira.com/blog/feed.xml https://github.com/feedjira/feedjira/feed.xml]
-feeds = Feedjira::Feed.fetch_and_parse urls # returns two Feedjira::Feed objects
-# => [<Feedjira::Feed ...>, <Feedjira::Feed ...>]
+feeds = Feedjira::Feed.fetch_and_parse urls # returns a Hash, with each url having a Feedjira::Feed object
+# => {
+#      'http://feedjira.com/blog/feed.xml' => <Feedjira::Feed ..>,
+#      'https://github.com/feedjira/feedjira/feed.xml' => <Feedjira::Feed ..>
+#    }
 ```
 
-## Speedup date parsing
-
-In MRI before 1.9.3 the date parsing code was written in Ruby and was optimized
-for readability over speed, to speed up this part you can install the
-[home_run][] gem to replace it with an optimized C version. In most cases, if
-you are using Ruby 1.9.3+, you will not need to use home\_run.
-
-[home_run]: https://github.com/jeremyevans/home_run
-
-## Usage
-
-[A gist of the following code](http://gist.github.com/57285)
+These feed objects have both the meta data for a feed and an `entries`
+collection that contains all the entries that were found:
 
 ```ruby
-require 'feedzirra'
+feed = feeds['http://feedjira.com/blog/feed.xml']
+feed.title   # => "The Feedjira Blog"
+feed.url     # => "http://feedjira.com/blog/feed.xml"
+feed.entries # returns an array of Entry objects
+# => [<Feedjira::Feed::Entry ...>, <Feedjira::Feed::Entry ...>, ...]
+```
 
-# fetching a single feed
-feed = Feedzirra::Feed.fetch_and_parse("http://feeds.feedburner.com/PaulDixExplainsNothing")
+These entry objects contain the data parsed from the feed XML:
 
-# feed and entries accessors
-feed.title          # => "Paul Dix Explains Nothing"
-feed.url            # => "http://www.pauldix.net"
-feed.feed_url       # => "http://feeds.feedburner.com/PaulDixExplainsNothing"
-feed.etag           # => "GunxqnEP4NeYhrqq9TyVKTuDnh0"
-feed.last_modified  # => Sat Jan 31 17:58:16 -0500 2009 # it's a Time object
-
+```ruby
 entry = feed.entries.first
-entry.title      # => "Ruby Http Client Library Performance"
-entry.url        # => "http://www.pauldix.net/2009/01/ruby-http-client-library-performance.html"
-entry.author     # => "Paul Dix"
-entry.summary    # => "..."
-entry.content    # => "..."
-entry.published  # => Thu Jan 29 17:00:19 UTC 2009 # it's a Time object
-entry.categories # => ["...", "..."]
+entry.title # => "Announcing verison 1.0"
+entry.url   # => "http://feedjira.com/blog/2014-02-12-announcing-version-10.html"
+```
 
-# sanitizing an entry's content
-entry.title.sanitize    # => returns the title with harmful stuff escaped
-entry.author.sanitize   # => returns the author with harmful stuff escaped
-entry.content.sanitize  # => returns the content with harmful stuff escaped
-entry.content.sanitize! # => returns content with harmful stuff escaped and replaces original (also exists for author and title)
-entry.sanitize!         # => sanitizes the entry's title, author, and content in place (as in, it changes the value to clean versions)
-feed.sanitize_entries!  # => sanitizes all entries in place
+Check the documentation for a complete list of the methods available to you on
+the [Feed][feed] and [Entry][entry] classes.
 
-# updating a single feed
-updated_feed = Feedzirra::Feed.update(feed)
+[feed]: http://link/to/docs?
+[entry]: http://link/to/docs?
 
-# an updated feed has the following extra accessors
-updated_feed.updated?     # returns true if any of the feed attributes have been modified. will return false if no new entries
-updated_feed.new_entries  # a collection of the entry objects that are newer than the latest in the feed before update
+## Updating Feeds
 
-# fetching multiple feeds
-feed_urls = ["http://feeds.feedburner.com/PaulDixExplainsNothing", "http://feeds.feedburner.com/trottercashion"]
-feeds = Feedzirra::Feed.fetch_and_parse(feed_urls)
+You'll most likely want to update the feed objects you fetch at some interval
+and Feedjira provides an easy way to do that:
 
-# feeds is now a hash with the feed_urls as keys and the parsed feed objects as values. If an error was thrown
-# there will be a Fixnum of the http response code instead of a feed object
-
-# updating multiple feeds. it expects a collection of feed objects
+```ruby
 updated_feeds = Feedzirra::Feed.update(feeds.values)
+updated_feed = updated_feeds['http://feedjira.com/blog/feed.xml']
+updated_feed.updated?    # => returns true if any of the feed attributes have changed
+updated_feed.new_entries # => a collection of the entry objects that are newer than the latest in the feed before update
+```
 
-# defining custom behavior on failure or success. note that a return status of 304 (not updated) will call the on_success handler
-feed = Feedzirra::Feed.fetch_and_parse("http://feeds.feedburner.com/PaulDixExplainsNothing",
-  :on_success => lambda [|url, feed| puts feed.title ],
-  :on_failure => lambda [|url, response_code, response_header, response_body| puts response_body ])
-# if a collection was passed into fetch_and_parse, the handlers will be called for each one
+## Callbacks
 
-# the behavior for the handlers when using Feedzirra::Feed.update is slightly different. The feed passed into on_success will be
-# the updated feed with the standard updated accessors. on failure it will be the original feed object passed into update
+Feedjira supports both a success and failure callback, which are provided to
+`fetch_and_parse`:
 
-# fetching a feed via a proxy (optional)
-feed = Feedzirra::Feed.fetch_and_parse("http://feeds.feedburner.com/PaulDixExplainsNothing", {:proxy_url => '10.0.0.1', :proxy_port => 3084})
+```ruby
+success_callback = lambda { |url, feed| puts url, feed }
+failure_callback = lambda { |curl, err| puts curl, err }
+Feedjira::Feed.fetch_and_parse urls, on_success: success_callback, on_failure: failure_callback
+```
+
+## Just Fetching
+
+The fetching functionality of Feedjira has been exposed so that it can be used
+in isolation:
+
+```ruby
+Feedjira::Feed.fetch_raw urls
+# => {
+#      'http://feedjira.com/blog/feed.xml' => '<?xml ...?>',
+#      'https://github.com/feedjira/feedjira/feed.xml' => '<?xml ...?>'
+#    }
+```
+
+## Just Parsing
+
+The parsing functionality of Feedjira has been exposed so that it can be used in
+isolation:
+
+```ruby
+xml = '<?xml ...?>' # the XML from http://feedjira.com/blog/feed.xml
+Feedjira::Feed.parse xml
+# => {
+#      'http://feedjira.com/blog/feed.xml' => <Feedjira::Feed ..>
+#    }
 ```
 
 ## Extending
