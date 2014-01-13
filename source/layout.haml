@@ -11,3 +11,8 @@
       %header
         %h1= link_to 'Feedjira', '/'
       %article= yield
+      %footer
+        %p
+          = link_to 'Blog Feed', 'blog/feed.xml'
+          = link_to '@feedjira', 'https://twitter.com/feedjira'
+          = link_to 'GitHub', 'https://github.com/feedjira/feedjira'
