@@ -1,7 +1,7 @@
 [Feedjira][github] is a Ruby library designed to fetch and parse feeds as
 quickly as possible. Fetching is fast by using libcurl-multi through the
 [curb][] gem. Similarly, parsing is made fast by using libxml through
-[nokogiri][] and [sax-machine][]. Feedzirra requires Ruby version 1.9.2 or
+[nokogiri][] and [sax-machine][]. Feedjira requires Ruby version 1.9.2 or
 greater.
 
 [github]: https://github.com/feedjira/feedjira
@@ -71,7 +71,7 @@ You'll most likely want to update the feed objects you fetch at some interval
 and Feedjira provides an easy way to do that:
 
 ```ruby
-updated_feeds = Feedzirra::Feed.update(feeds.values)
+updated_feeds = Feedjira::Feed.update(feeds.values)
 updated_feed = updated_feeds['http://feedjira.com/blog/feed.xml']
 updated_feed.updated?    # => returns true if any of the feed attributes have changed
 updated_feed.new_entries # => a collection of the entry objects that are newer than the latest in the feed before update
@@ -121,18 +121,18 @@ Feedjira::Feed.parse xml
 When determining which parser to use for a given XML document, the following
 list of parser classes is used:
 
-* `Feedzirra::Parser::RSSFeedBurner`
-* `Feedzirra::Parser::GoogleDocsAtom`
-* `Feedzirra::Parser::AtomFeedBurner`
-* `Feedzirra::Parser::Atom`
-* `Feedzirra::Parser::ITunesRSS`
-* `Feedzirra::Parser::RSS`
+* `Feedjira::Parser::RSSFeedBurner`
+* `Feedjira::Parser::GoogleDocsAtom`
+* `Feedjira::Parser::AtomFeedBurner`
+* `Feedjira::Parser::Atom`
+* `Feedjira::Parser::ITunesRSS`
+* `Feedjira::Parser::RSS`
 
 You can insert your own parser at the front of this stack by calling
 `add_feed_class`, like this:
 
 ```ruby
-Feedzirra::Feed.add_feed_class MyAwesomeParser
+Feedjira::Feed.add_feed_class MyAwesomeParser
 ```
 
 Now when you `fetch_and_parse`, `MyAwesomeParser` will be the first one to get a
@@ -142,19 +142,19 @@ If you have the XML and just want to provide a parser class for one parse, you
 can specify that using `parse_with`:
 
 ```ruby
-Feedzirra::Feed.parse_with MyAwesomeParser, xml
+Feedjira::Feed.parse_with MyAwesomeParser, xml
 ```
 
 ### Adding attributes to all feeds types / all entries types
 
 ```ruby
 # Add the generator attribute to all feed types
-Feedzirra::Feed.add_common_feed_element('generator')
-Feedzirra::Feed.fetch_and_parse("http://www.pauldix.net/atom.xml").generator # => 'TypePad'
+Feedjira::Feed.add_common_feed_element('generator')
+Feedjira::Feed.fetch_and_parse("http://www.pauldix.net/atom.xml").generator # => 'TypePad'
 
 # Add some GeoRss information
-Feedzirra::Feed.add_common_feed_entry_element('geo:lat', :as => :lat)
-Feedzirra::Feed.fetch_and_parse("http://www.earthpublisher.com/georss.php").entries.each do |e|
+Feedjira::Feed.add_common_feed_entry_element('geo:lat', :as => :lat)
+Feedjira::Feed.fetch_and_parse("http://www.earthpublisher.com/georss.php").entries.each do |e|
   p "lat: #[e.lat}, long: #{e.long]"
 end
 ```
@@ -168,32 +168,32 @@ in the class
 # Add some GeoRss information
 require 'lib/feedzirra/parser/rss_entry'
 
-class Feedzirra::Parser::RSSEntry
+class Feedjira::Parser::RSSEntry
   element 'geo:lat', :as => :lat
   element 'geo:long', :as => :long
 end
 
 # Fetch a feed containing GeoRss info and print them
-Feedzirra::Feed.fetch_and_parse("http://www.earthpublisher.com/georss.php").entries.each do |e|
+Feedjira::Feed.fetch_and_parse("http://www.earthpublisher.com/georss.php").entries.each do |e|
   p "lat: #{e.lat}, long: #{e.long}"
 end
 ```
 
 ## Testing
 
-Feedzirra uses [curb][] to perform requests. `curb` provides bindings for
-[libcurl][] and supports numerous protocols, including FILE. To test Feedzirra
+Feedjira uses [curb][] to perform requests. `curb` provides bindings for
+[libcurl][] and supports numerous protocols, including FILE. To test Feedjira
 with local file use `file://` protocol:
 
 [libcurl]: http://curl.haxx.se/libcurl/
 
 ```ruby
-feed = Feedzirra::Feed.fetch_and_parse('file:///home/feedzirra/examples/feed.rss')
+feed = Feedjira::Feed.fetch_and_parse('file:///home/feedzirra/examples/feed.rss')
 ```
 
 ## Benchmarks
 
-Since a major goal of Feedzirra is speed, benchmarks are provided--see the
+Since a major goal of Feedjira is speed, benchmarks are provided--see the
 [Benchmark README][benchmark_readme] for more details.
 
 [benchmark_readme]: https://github.com/pauldix/feedzirra/blob/master/benchmarks/README.md
