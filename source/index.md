@@ -1,5 +1,3 @@
-# Feedjira
-
 [Feedjira][github] is a Ruby library designed to fetch and parse feeds as
 quickly as possible. Fetching is fast by using libcurl-multi through the
 [curb][] gem. Similarly, parsing is made fast by using libxml through

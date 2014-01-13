@@ -8,4 +8,6 @@
     = feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: 'Atom Feed'
   %body
     #main
-      = yield
+      %header
+        %h1= link_to 'Feedjira', '/'
+      %article= yield
