@@ -1,0 +1,7 @@
+%h1 Blog
+
+%dl
+  - blog.articles.each do |article|
+    %dt= link_to article.title, article.url
+    %dd= article.date.strftime('%b %e %Y')
+    %dd= article.body
