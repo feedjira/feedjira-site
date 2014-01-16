@@ -13,8 +13,8 @@ parsing, and make things speedier in general.
 
 [Learn more about updating feeds](/updating-feeds.html)
 
-Callback are supported that get invoked on success and failure. This makes it
-easy to do things like log errors or update data stores.
+Users can provide callbacks that get invoked on success and failure. This makes
+it easy to do things like log errors or update data stores.
 
 [Learn more about callbacks](/callbacks.html)
 
