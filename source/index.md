@@ -43,7 +43,7 @@ gem 'feedjira'
 
 Feedjira uses [curb][] to perform requests. `curb` provides bindings for
 [libcurl][] and supports numerous protocols, including FILE. To test Feedjira
-with local file use `file://` protocol:
+with a local file, use the `file://` protocol:
 
 [libcurl]: http://curl.haxx.se/libcurl/
 
