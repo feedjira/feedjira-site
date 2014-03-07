@@ -3,18 +3,27 @@
   %head
     %meta(charset='utf-8')
     %meta(http-equiv='X-UA-Compatible' content='IE=edge;chrome=1')
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=.7, maximum-scale=1"}
     %title Feedjira
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,400italic,700,700italic,300italic', rel: 'stylesheet', type: 'text/css'
     = stylesheet_link_tag :syntax, :style
     = feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: 'Atom Feed'
   %body
-    #main
+    #content
       %header
         %h1= link_to 'Feedjira', '/'
-      %article= yield
-      %footer
-        %p
-          = link_to 'Blog', '/blog/'
-          = link_to 'Feed', '/blog/feed.xml'
-          = link_to '@feedjira', 'https://twitter.com/feedjira'
-          = link_to 'GitHub Project', 'https://github.com/feedjira/feedjira'
-        %p maintained by: #{link_to 'Jon Allured', 'http://jonallured.com'}, created by: #{link_to 'Paul Dix', 'http://www.pauldix.net'}, site design by: #{link_to 'Daniel Ariza', 'http://danielariza.com'}
+      %nav
+        %ul
+          %li= link_to 'Home', '/'
+          %li= link_to 'Blog', '/blog/'
+          %li= link_to 'Source', 'https://github.com/feedjira/feedjira'
+      %section= yield
+    %footer
+      .column
+        %ul
+          %li= link_to 'Home', '/'
+          %li= link_to 'Blog', '/blog/'
+          %li= link_to 'Feed', '/blog/feed.xml'
+          %li= link_to 'Source', 'https://github.com/feedjira/feedjira'
+          %li= link_to '@feedjira', 'https://twitter.com/feedjira'
+        %p Maintained by #{link_to 'Jon Allured', 'http://jonallured.com'}, Created by #{link_to 'Paul Dix', 'http://www.pauldix.net'}, Site design by #{link_to 'Daniel Ariza', 'http://danielariza.com'}

@@ -4,25 +4,25 @@ be used separately if don't need everything that Feedjira offers.
 
 [github]: https://github.com/feedjira/feedjira
 
-[Learn more about fetching and parsing](/fetching-and-parsing.html)
+<a class="button" href="/fetching-and-parsing.html">Learn more about fetching and parsing</a>
 
 Once feeds have been fetched, they can be updated using the feed objects that
 are returned. Feedjira automatically inserts etag and last-modified information
 from the http response headers to lower bandwidth usage, eliminate unnecessary
 parsing, and make things speedier in general.
 
-[Learn more about updating feeds](/updating-feeds.html)
+<a class="button" href="/updating-feeds.html">Learn more about updating feeds</a>
 
 Users can provide callbacks that get invoked on success and failure. This makes
 it easy to do things like log errors or update data stores.
 
-[Learn more about callbacks](/callbacks.html)
+<a class="button" href="/callbacks.html">Learn more about callbacks</a>
 
 Feedjira is very extensible with great support for adding your own custom parser
 classes or just on the fly customizations like adding an attribute to all or
 just one feed.
 
-[Learn more about extending](/extending.html)
+<a class="button" href="/extending.html">Learn more about extending</a>
 
 ## Getting Started
 
@@ -64,4 +64,4 @@ through [nokogiri][] and [sax-machine][].
 To ensure its fast and stays that way, benchmarks are provided that compare it
 to other feed libraries and itself.
 
-[View the benchmarks](/benchmarks.html)
+<a class="button" href="/benchmarks.html">View the benchmarks</a>

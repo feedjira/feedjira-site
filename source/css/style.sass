@@ -1,12 +1,159 @@
-body
-  background-color: green
-  font-family: arial
+@import "mixins"
 
-#main
-  background-color: #fff
-  margin: 0 auto
-  padding: 20px
-  width: 600px
+a
+  color: #0e8292
+  text-decoration: none
+  +transition(color 400ms)
+  &:hover
+    color: #0fa1b5
+  &.button
+    display: inline-block
+    border: 1px solid #0d7d8e
+    padding: 7px 10px 6px
+    margin-bottom: 10px
+    +transition((color 400ms, border-color 400ms))
+    &:hover
+      border-color: #0fa1b5
+
+p, pre
+  margin-bottom: 20px
+
+h1, h2, h3, h4
+  font-weight: 300
+  color: #0e8292
+  text-transform: uppercase
+  font-size: 24px
+  margin-bottom: 15px
+
+h2
+  font-size: 18px
+  padding-top: 20px
+h3
+  font-size: 16px
+h4
+  font-size: 14px
+
+body
+  font-family: 'Merriweather Sans', Helvetica, sans-serif
+  font-size: 14px
+  line-height: 160%
+  -webkit-font-smoothing: antialiased
+  color: #2a3e47
+  background: #f6f6f7 image-url("bg_mountains.jpg") 0 0 no-repeat
+  border: 10px solid #f6f6f7
+  border-bottom: 0
+  +transition(background-position 400ms)
+  +max-width
+    background-position: -300px 0
+  +mobile
+    background-position: -500px 0
+
+#content
+  overflow: hidden
+  padding: 50px 100px 30px 30%
+  min-height: 800px
+  +box-sizing
+  > header
+    overflow: hidden
+    margin-bottom: 50px
+    h1
+      float: right
+      width: 183px
+      a
+        overflow: hidden
+        display: block
+        height: 111px
+        background: transparent image-url("logo.png") 0 0 no-repeat
+        text-indent: -3000px
+  + footer
+    overflow: hidden
+    clear: both
+    width: 100%
+    padding: 20px 100px 0 0
+    background: #ececec
+    border-top: 1px solid #cecece
+    +box-sizing
+    .column
+      float: right
+      text-align: right
+    ul
+      float: right
+      margin-bottom: 20px
+      li
+        float: left
+        margin-left: 15px
+        font-weight: 300
+    p
+      clear: both
+      font-size: 12px
+      color: #878787
+      margin-bottom: 40px
+  > nav
+    float: left
+    width: 20%
+    text-align: right
+    +box-sizing
+    a
+      font-weight: 300
+      font-size: 18px
+      color: #b2d6d6
+      +transition(color 400ms)
+      &:hover, &.active
+        color: #fafafa
+    li
+      margin-bottom: 20px
+  > section
+    float: left
+    width: 80%
+    padding-left: 60px
+    +box-sizing
+  +min-width
+    > nav a
+      color: #0e8292
+      &:hover, &.active
+        color: #1aacc0
+  +max-width
+    padding: 50px 100px 30px 0
+  +mobile
+    padding: 50px 30px 30px
+    > header
+      h1
+        float: none
+        margin: 0 auto
+    + footer
+      padding: 20px 30px 0
+      ul
+        float: none
+        width: 100%
+        li
+          text-align: center
+          margin: 0 0 20px
+          width: 20%
+      p
+        text-align: center
+    > nav
+      overflow: hidden
+      float: none
+      width: 100%
+      padding-bottom: 20px
+      border-bottom: 1px solid #0e8292
+      margin-bottom: 20px
+      text-align: center
+      li
+        float: left
+        width: 33.3%
+        margin: 0
+        text-align: center
+        a
+          text-align: center
+          color: #0e8292
+          &:hover, &.active
+            color: #1aacc0
+    > section
+      clear: both
+      float: none
+      width: 100%
+      padding: 0
 
 pre.highlight
   line-height: 1.5em
