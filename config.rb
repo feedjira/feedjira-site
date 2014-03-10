@@ -4,6 +4,9 @@ set :markdown, fenced_code_blocks: true, smartypants: true
 
 set :haml, { ugly: true }
 
+page "*", layout: :default
+page "blog/feed.xml", layout: false
+
 ###
 # Blog settings
 ###
@@ -34,8 +37,6 @@ activate :blog do |blog|
   # blog.per_page = 10
   # blog.page_link = "page/{num}"
 end
-
-page "/blog/feed.xml", layout: false
 
 ###
 # Compass
