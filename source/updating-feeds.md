@@ -1,4 +1,4 @@
-## Updating Feeds
+# Updating Feeds
 
 You'll most likely want to update the feed objects you fetch at some interval
 and Feedjira provides an easy way to do that:

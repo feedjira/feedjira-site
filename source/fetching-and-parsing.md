@@ -1,4 +1,4 @@
-## Fetch and Parse
+# Fetching and Parsing
 
 For many users, the `fetch_and_parse` method is what they use Feedjira for. This
 method takes your urls and then returns Feed objects:

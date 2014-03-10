@@ -1,6 +1,6 @@
-## Extending
+# Extending
 
-### Adding a feed parsing class
+## Adding a feed parsing class
 
 When determining which parser to use for a given XML document, the following
 list of parser classes is used:
@@ -29,7 +29,7 @@ can specify that using `parse_with`:
 Feedjira::Feed.parse_with MyAwesomeParser, xml
 ```
 
-### Adding attributes to all feeds types / all entries types
+## Adding attributes to all feeds types / all entries types
 
 ```ruby
 # Add the generator attribute to all feed types
@@ -43,7 +43,7 @@ Feedjira::Feed.fetch_and_parse("http://www.earthpublisher.com/georss.php").entri
 end
 ```
 
-### Adding attributes to only one class
+## Adding attributes to only one class
 
 If you want to add attributes for only one class you simply have to declare them
 in the class
@@ -62,4 +62,3 @@ Feedjira::Feed.fetch_and_parse("http://www.earthpublisher.com/georss.php").entri
   p "lat: #{e.lat}, long: #{e.long}"
 end
 ```
-

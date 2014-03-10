@@ -1,4 +1,4 @@
-## Callbacks
+# Callbacks
 
 Feedjira supports both a success and failure callback, which are provided to
 `fetch_and_parse`:
