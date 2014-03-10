@@ -1,8 +1,13 @@
-[Feedjira][github] is a Ruby library designed to fetch and parse feeds as
-quickly as possible. The fetching and parsing logic have been decoupled and can
-be used separately if don't need everything that Feedjira offers.
+[Feedjira][github] (formerly Feedzilla) is a Ruby library designed to fetch and
+parse feeds as quickly as possible. Version 1.0 [was recently released][one].
 
 [github]: https://github.com/feedjira/feedjira
+[one]: /blog/feedjira-goes-one-point-oh.html
+
+<a class="button" href="/upgrading.html">Learn more about upgrading to 1.0</a>
+
+The fetching and parsing logic have been decoupled and can be used separately if
+don't need everything that Feedjira offers.
 
 <a class="button" href="/fetching-and-parsing.html">Learn more about fetching and parsing</a>
 
