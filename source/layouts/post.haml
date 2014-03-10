@@ -1,4 +1,5 @@
 - wrap_layout :default do
   %article#post
     %h1= current_article.title
+    %p Posted by Jon Allured on #{current_article.date.strftime('%B %e, %Y')}
     = yield
