@@ -2,7 +2,7 @@
 parse feeds as quickly as possible. Version 1.0 [was recently released][one].
 
 [github]: https://github.com/feedjira/feedjira
-[one]: /blog/feedjira-goes-one-point-oh.html
+[one]: /blog/2014/03/17/feedjira-goes-one-point-oh.html
 
 <a class="button" href="/upgrading.html">Learn more about upgrading to 1.0</a>
 
