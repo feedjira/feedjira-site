@@ -5,6 +5,8 @@ set :markdown, fenced_code_blocks: true, smartypants: true
 set :haml, { ugly: true }
 
 page "*", layout: :default
+page "blog/*", layout: :post
+page "blog/index.html", layout: :default
 page "blog/feed.xml", layout: false
 
 ###
