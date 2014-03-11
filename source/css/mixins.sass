@@ -160,9 +160,9 @@ $prefixes: moz, ms, webkit, khtml, o
     @content
 
 = retina_bg($filename, $dimensions: false, $ext:"png")
-  background-image: asset-url("#{$filename}.#{$ext}")
+  background-image: image-url("#{$filename}.#{$ext}")
   +retina
-    background-image: asset-url("#{$filename}@2x.#{$ext}")
+    background-image: image-url("#{$filename}@2x.#{$ext}")
     @if $dimensions != false
       background-size: $dimensions
 
