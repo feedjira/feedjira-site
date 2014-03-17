@@ -2,7 +2,7 @@
 title: Feedjira Goes One-Point-Oh
 ---
 
-Last fall I asked [Paul Dix][p] if I could take over maintenance of his gem
+Last fall, I asked [Paul Dix][p] if I could take over maintenance of his gem
 Feedzirra. My request was totally out of the blue, so I was pretty pumped when
 he got right back to me and said yes. He said that he didn't have time to work
 on it anymore and so I should feel free to do whatever I thought was best.
@@ -23,9 +23,9 @@ work addressing their questions and issues.
 As I was working through issues and pull requests, I kept [SemVer][s] in mind -
 bug fixes in patch releases and backward-compatible changes in minor releases.
 But I also realized that it was past time for this project to be at version 1.0.
-In their FAQ, they talk about when to release version 1.0 and Feedzirra fit the
-bill: it was being used in production, there was a stable API and I was taking
-backwards compatibilty seriously.
+In the SemVer FAQ, they talk about when to release version 1.0 and Feedzirra fit
+the bill: it was being used in production, there was a stable API and I was
+taking backwards compatibilty seriously.
 
 [s]: http://semver.org
 
@@ -58,7 +58,7 @@ page][u] to help with a couple details. If you have any trouble upgrading,
 please let me know by [opening an issue][i].
 
 [u]: /upgrading.html
-[i]: path/to/github/issues.html
+[i]: https://github.com/feedjira/feedjira/issues
 
 There are still lots of things I'd like to do with this Gem. I mentioned seeing
 things that I wanted to completely rewrite, so that'll be something that I work
