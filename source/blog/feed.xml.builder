@@ -1,6 +1,6 @@
 xml.instruct!
 xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
-  site_url = "http://blog.url.com/"
+  site_url = "http://feedjira.com/"
   xml.title "Feedjira Blog"
   xml.subtitle "A Blog for Feedjira"
   xml.id URI.join(site_url, blog.options.prefix.to_s)
