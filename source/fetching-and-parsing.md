@@ -31,12 +31,6 @@ entry.title # => "Announcing verison 1.0"
 entry.url   # => "http://feedjira.com/blog/2014-02-12-announcing-version-10.html"
 ```
 
-Check the documentation for a complete list of the methods available to you on
-the [Feed][feed] and [Entry][entry] classes.
-
-[feed]: http://link/to/docs?
-[entry]: http://link/to/docs?
-
 ## Just Fetching
 
 The fetching functionality of Feedjira has been exposed so that it can be used
