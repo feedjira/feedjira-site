@@ -58,6 +58,14 @@ brittle and painful. With the new version, I want to see sensible exceptions
 raised when something goes wrong and that pretty much removes the need for
 callbacks, so those will be cut.
 
+## Feed Updating is Business Logic
+
+The updating functionality of Feedjira leaves a lot to be desired - its
+inconsistent and there are lots of edges. I tend to steer users away and
+encourage them to write this kind of code in their application instead. See
+[this discussion][d] for more, but needless to say, I'd like to see this entire
+feature set removed.
+
 ## Configuration
 
 I want configuration for Feedjira done in a proper config block like most gems.
@@ -76,3 +84,4 @@ if I just threw your favorite feature on the chopping block, please tell me!
 [f]: https://github.com/lostisland/faraday
 [s]: http://en.wikipedia.org/wiki/Single_responsibility_principle
 [b]: https://github.com/feedjira/feedjira-benchmarks
+[d]: https://github.com/feedjira/feedjira/issues/218
