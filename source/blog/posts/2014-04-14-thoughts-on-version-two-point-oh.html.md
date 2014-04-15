@@ -50,6 +50,14 @@ to easily grab these parsers and throw them in your application. If you write a
 particularly cool custom parser, then you could contribute it back and others
 could benefit from it.
 
+## Raise Exceptions Instead of Callbacks
+
+Feedjira almost never raises an exception and instead provides the ability to
+register callbacks for success and failure situations, but this has proven
+brittle and painful. With the new version, I want to see sensible exceptions
+raised when something goes wrong and that pretty much removes the need for
+callbacks, so those will be cut.
+
 ## Configuration
 
 I want configuration for Feedjira done in a proper config block like most gems.
