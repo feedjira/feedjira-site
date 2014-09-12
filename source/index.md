@@ -29,6 +29,12 @@ just one feed.
 
 <a class="button" href="/extending.html">Learn more about extending</a>
 
+Feedjira is used in some awesome projects around the web - from RSS readers to
+add-ons and everything in between.
+
+<a class="button" href="/projects.html">Learn more about projects that use
+Feedjira</a>
+
 ## Getting Started
 
 Feedjira requires Ruby version 1.9.2 or greater and like any Ruby gem, the first
