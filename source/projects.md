@@ -23,3 +23,11 @@ that's easy to deploy to any host, there's even a one-click button to deploy on
 Heroku.
 
 [https://github.com/swanson/stringer](https://github.com/swanson/stringer)
+
+## BlogFeeder
+
+BlogFeeder is a paid Shopify App that makes it easy for you to import any
+external blog into your Shopify store. It helps improve your store's SEO and
+keeps your blogs in sync, plus a lot more.
+
+[https://apps.shopify.com/blogfeeder](https://apps.shopify.com/blogfeeder)
