@@ -15,3 +15,11 @@ experience. It's a paid RSS reader that integrates with mobile apps and it even
 has a fully featured API!
 
 [https://feedbin.com/](https://feedbin.com/)
+
+## Stringer
+
+Stringer is a self-hosted, anti-social RSS reader. It's an open-source project
+that's easy to deploy to any host, there's even a one-click button to deploy on
+Heroku.
+
+[https://github.com/swanson/stringer](https://github.com/swanson/stringer)
