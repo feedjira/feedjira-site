@@ -31,3 +31,11 @@ external blog into your Shopify store. It helps improve your store's SEO and
 keeps your blogs in sync, plus a lot more.
 
 [https://apps.shopify.com/blogfeeder](https://apps.shopify.com/blogfeeder)
+
+## Feedbunch
+
+Feedbunch is an open source feed reader built to fill the hole left by Google
+Reader. It aims to support all features of Google Reader and actually improve on
+others.
+
+[https://github.com/amatriain/feedbunch](https://github.com/amatriain/feedbunch)
