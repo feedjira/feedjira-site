@@ -39,3 +39,11 @@ Reader. It aims to support all features of Google Reader and actually improve on
 others.
 
 [https://github.com/amatriain/feedbunch](https://github.com/amatriain/feedbunch)
+
+## The Old Reader
+
+The Old Reader advertises as the ultimate social RSS reader. It's free to start
+and also has a paid premium version. There's an API and it integrates with many
+different mobile apps.
+
+[http://theoldreader.com/](http://theoldreader.com/)
