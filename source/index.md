@@ -1,4 +1,4 @@
-[Feedjira][github] (formerly Feedzilla) is a Ruby library designed to fetch and
+[Feedjira][github] (formerly Feedzirra) is a Ruby library designed to fetch and
 parse feeds as quickly as possible. Version 1.0 [was recently released][one].
 
 [github]: https://github.com/feedjira/feedjira
