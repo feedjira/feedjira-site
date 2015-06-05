@@ -8,8 +8,8 @@ RSS feeds. Version 2.0 [was recently released][two].
 
 ## Getting Started
 
-Feedjira requires Ruby version 1.9.2 or greater and like any Ruby gem, the first
-step is to install the gem:
+Feedjira is tested with Ruby version 1.9.3 and 2.x so like any Ruby gem, the
+first step is to install the gem:
 
 ```
 $ gem install feedjira
