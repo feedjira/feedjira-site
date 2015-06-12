@@ -132,7 +132,7 @@ end
 ## Testing
 
 Feedjira uses [faraday][] to perform requests, so testing Feedjira is really
-about [stubbing out faraday requests](stub).
+about [stubbing out faraday requests][stub].
 
 [faraday]: https://github.com/lostisland/faraday
 [stub]: https://github.com/lostisland/faraday#using-faraday-for-testing
