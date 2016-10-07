@@ -162,11 +162,15 @@ add-ons and everything in between. Here are some of them:
   reader. It's free to start and also has a paid premium version. There's an API
   and it integrates with many different mobile apps.
 
+* [Solve for All][solve]: Solve for All combines search engine and feed parsing
+  while protecting your privacy. It's even extendable by the community!
+
 [Feedbin]: https://feedbin.com/
 [Stringer]: https://github.com/swanson/stringer
 [BlogFeeder]: https://apps.shopify.com/blogfeeder
 [Feedbunch]: https://github.com/amatriain/feedbunch
 [old]: http://theoldreader.com/
+[solve]: https://solveforall.com/
 
 Note: to get your project on this list, simply [send an email](mailto:feedjira@gmail.com)
 with your project's details.
